@@ -1,9 +1,9 @@
 #pragma
 #include "Board.h"
 
-Board::Board(int width, int height, std::string title, int tile_size) 
+Board::Board(int width, int height, std::string title, int tile_size)
     : window(sf::VideoMode(width, height), title), tile_size(tile_size), 
-    tiles_num(window.getSize().x / tile_size), sound(){
+    tiles_num(window.getSize().x / tile_size), stop(false), speed(5) {
     b_sound.loadFromFile("./resources/bloop.wav");
     sound.setBuffer(b_sound);
 
@@ -18,8 +18,17 @@ Board::Board(int width, int height, std::string title, int tile_size)
 }
 
 void Board::Start_game(){
+    int counter = 0;
     while (window.isOpen())
     {
+        if (stop) {
+            counter++;
+            if (counter >= speed * 1) {
+                Check_board();
+                Del_non_active();
+                counter = 0;
+            }
+        }
         Event_handler();
         window.clear(sf::Color::White);
         for (int y = 0; y < tiles_num; y++) {
@@ -57,9 +66,21 @@ void Board::Event_handler() {
 
         case sf::Event::KeyPressed:
             if (event.key.code == sf::Keyboard::Enter) {
-
                 Check_board();
                 Del_non_active();
+            }
+            else if (event.key.code == sf::Keyboard::S) {
+                stop = !stop;
+            }
+            else if (event.key.code == sf::Keyboard::O) {
+                if (speed < 10) {
+                    speed++;
+                }
+            }
+            else if (event.key.code == sf::Keyboard::P) {
+                if (speed > 1) {
+                    speed--;
+                }
             }
             break;
         default:
@@ -69,29 +90,11 @@ void Board::Event_handler() {
 }
 
 void Board::Del_non_active() {
-    std::vector<int> ids;
-    int ba = active_tiles.size();
-    for (int i = 0; i < active_tiles.size(); i++) {
-        if (!active_tiles[i]->Is_active()) {
-            ids.push_back(i);
-        }
-        else {
-        }
-    }
-    if (ids.size() == active_tiles.size()) {
-        active_tiles.clear();
-    }
-    else {
-        for (int i = 0; i < ids.size(); i++) {
-            std::cout << ids[i];
-            active_tiles.erase(active_tiles.begin() + ids[i]);
-        }
-    }
-    ids.clear();
+    active_tiles.clear();
     for (int y = 0; y < tiles_num; y++) {
         for (int x = 0; x < tiles_num; x++) {
             if (board[y][x].Is_active()) {
-                std::cout << board[y][x].Get_pos().Get_x() << " , " << board[y][x].Get_pos().Get_y() << std::endl;
+                active_tiles.push_back(&board[y][x]);
             }
         }
     }
@@ -110,10 +113,21 @@ void Board::Tile_handler() {
     }
 }
 
+bool Board::Pos_in_range(Point pos) {
+    if (pos.Get_x() >= 0 && pos.Get_x() < tiles_num) {
+        if (pos.Get_y() >= 0 && pos.Get_y() < tiles_num) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Board::Check_board() {
     for (int i = 0; i < active_tiles.size(); i++) {
         Check_neighbours(active_tiles[i]);
+        tiles_to_check.push_back(active_tiles[i]);
     }
+
     for (int i = 0; i < tiles_to_change.size(); i++) {
         if (tiles_to_change[i]->Is_active()) {
             tiles_to_change[i]->Die();
@@ -124,19 +138,22 @@ void Board::Check_board() {
         }
         tiles_to_change[i]->Change_check_flag();
     }
-    tiles_to_change.clear();
-    for (int y = 0; y < tiles_num; y++) {
-        for (int x = 0; x < tiles_num; x++) {
-            if (board[y][x].Get_check_flag()) {
-                board[y][x].Change_check_flag();
-            }
+
+    for (int i = 0; i < tiles_to_check.size(); i++) {
+        if (tiles_to_check[i]->Get_check_flag()) {
+            tiles_to_check[i]->Change_check_flag();
         }
     }
+    tiles_to_check.clear();
+    tiles_to_change.clear();
 }
 
 void Board::Check_neighbours(Tile* current) {
     if (!current->Get_check_flag()) {
-        std::cout << "checking (" << current->Get_pos().Get_x() << ", " << current->Get_pos().Get_y() << ")\n";
+
+        //current->Change_color(Colors::Black);
+        //current->Change_check_flag();
+
         int alive_neigh = 0;
         Point coords;
         coords.Set_x(current->Get_pos().Get_x() + tile_size / 2);
@@ -151,6 +168,8 @@ void Board::Check_neighbours(Tile* current) {
                     if (new_x >= 0 && new_x < tiles_num) {
                         if (new_y >= 0 && new_y < tiles_num) {
                             if (current->Is_active() && !board[new_y][new_x].Is_active()) {
+                                
+                                tiles_to_check.push_back(&board[new_y][new_x]);
                                 Check_neighbours(&board[new_y][new_x]);
                             }
                             if(board[new_y][new_x].Is_active()){
@@ -166,6 +185,17 @@ void Board::Check_neighbours(Tile* current) {
         }
         else if (!current->Is_active() && alive_neigh == 3){
             tiles_to_change.push_back(current);
+        }
+    }
+}
+
+void Board::recolor() {
+    for (int y = 0; y < tiles_num; y++) {
+        for (int x = 0; x < tiles_num; x++) {
+            if (board[y][x].Is_active()) {
+                board[y][x].Change_color(Colors::Black);
+                active_tiles.size();
+            }
         }
     }
 }

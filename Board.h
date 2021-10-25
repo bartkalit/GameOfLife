@@ -20,9 +20,12 @@ private:
 	sf::SoundBuffer b_sound;
 	Tile_list active_tiles;
 	Tile_list tiles_to_change;
+	Tile_list tiles_to_check;
 	Point mouse;
 	int tile_size;
 	int tiles_num;
+	int speed;
+	bool stop;
 
 public:
 	
@@ -37,6 +40,8 @@ private:
 	void Add_age();
 	void Check_neighbours(Tile* current);
 	void Check_board();
+	bool Pos_in_range(Point pos);
+	void recolor();
 };
 
 #endif

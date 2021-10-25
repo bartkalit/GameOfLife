@@ -34,9 +34,9 @@ public:
 	bool Is_active();
 	bool Get_check_flag();
 	sf::RectangleShape Get_tile();
+	void Change_color(Colors color);
 
 private:
 	void Set_rectangle();
-	void Change_color(Colors color);
 };
 #endif

@@ -16,7 +16,7 @@ int main()
     cin >> y;
     cout << "The name should be ";
     cin >> title;*/
-    Board board(x, y ,title, 40);
+    Board board(x, y ,title, 10);
     board.Start_game();
     return 0;
 }
