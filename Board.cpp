@@ -90,14 +90,14 @@ void Board::Event_handler() {
 }
 
 void Board::Del_non_active() {
-    active_tiles.clear();
-    for (int y = 0; y < tiles_num; y++) {
-        for (int x = 0; x < tiles_num; x++) {
-            if (board[y][x].Is_active()) {
-                active_tiles.push_back(&board[y][x]);
-            }
+    Tile_list buffor;
+    for (int i = 0; i < active_tiles.size(); i++) {
+        if (active_tiles[i]->Is_active()) {
+            buffor.push_back(active_tiles[i]);
         }
     }
+    active_tiles.clear();
+    active_tiles = buffor;
 }
 
 void Board::Tile_handler() {
@@ -133,8 +133,8 @@ void Board::Check_board() {
             tiles_to_change[i]->Die();
         }
         else {
-            tiles_to_change[i]->Live();
             active_tiles.push_back(tiles_to_change[i]);
+            tiles_to_change[i]->Live();
         }
         tiles_to_change[i]->Change_check_flag();
     }
