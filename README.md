@@ -7,6 +7,6 @@ Controls:
 <br>O - slow down time
 <br>P - speed up time
 <br>
-<p align="center">
+<div align="center">
 ![Alt Text](https://media.giphy.com/media/0tzmmHyFpif56gPQUK/giphy.gif)
-</p>
+</div>
