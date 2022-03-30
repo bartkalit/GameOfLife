@@ -9,5 +9,5 @@ S - stop/resume time
 <br>P - speed up
 <br>
 <p align="center">
-  <img src="https://media.giphy.com/media/0tzmmHyFpif56gPQUK/giphy.gif" alt="animated" />
+  <img src="https://media.giphy.com/media/t7UohfdpAPhxZhYI19/giphy.gif" alt="animated" />
 </p>
