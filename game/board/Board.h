@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Tile.h"
-#include "Point.h"
+#include "../mouse/Point.h"
 
 class Board {
 	typedef std::vector<Tile*> Tile_list;

@@ -1,0 +1,9 @@
+# Default ignored files
+Debug/
+SFML/
+x64/
+*.dll
+*.filters
+*.user
+*.vcxproj
+.vs/

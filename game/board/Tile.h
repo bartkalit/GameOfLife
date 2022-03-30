@@ -3,7 +3,7 @@
 #define TILE_H
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "Point.h"
+#include "../mouse/Point.h"
 
 enum Colors {
 	White = 0,

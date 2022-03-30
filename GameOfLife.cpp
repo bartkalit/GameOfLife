@@ -2,7 +2,7 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <string>
-#include "Board.h"
+#include "game/board/Board.h"
 using namespace std;
 
 int main()
