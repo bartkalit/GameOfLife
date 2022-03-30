@@ -4,7 +4,7 @@ It's a simple implementation of a well known Conway's game of life written in c+
 <br>Click - to activate/deactivate tile
 <br>
 #### Controls:
-<br>S - stop/resume time
+S - stop/resume time
 <br>O - slow down time
 <br>P - speed up time
 <br>
