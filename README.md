@@ -11,8 +11,7 @@ It's a simple implementation of a well known Conway's game of life written in C+
 </ol>
 
 ### Example structures:
-
-![light2](https://user-images.githubusercontent.com/80967661/162577189-6b51b569-6977-465d-8fa1-c9eb779a4607.png)
+![examples_light](https://user-images.githubusercontent.com/80967661/162577221-cd9e287c-1a7b-4a3a-91f1-e47178d8e926.svg)
 
 <br>Click - to activate/deactivate tile
 <br>
