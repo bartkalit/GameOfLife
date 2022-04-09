@@ -13,7 +13,7 @@ It's a simple implementation of a well known Conway's game of life written in C+
 ### Example structures:
 ![legenda](https://user-images.githubusercontent.com/80967661/162577429-12343fc6-2f21-4360-8a72-0541a69e375d.png)
 ![oscylator](https://user-images.githubusercontent.com/80967661/162577430-d2a85924-2c08-4b4d-ace5-8cfd16c21741.png)
-![glider](https://user-images.githubusercontent.com/80967661/162577685-5519bbc4-7dfa-4d15-b75c-9a11f7cb35bd.png)
+![glider](https://user-images.githubusercontent.com/80967661/162577811-0a7f40a9-62a1-43ac-9f64-6392cc3101fa.png)
 
 
 <br>Click - to activate/deactivate tile
