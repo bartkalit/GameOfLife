@@ -9,8 +9,9 @@ It's a simple implementation of a well known Conway's game of life written in C+
   <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
   <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
 </ol>
+
 ### Example structures:
-<br>
+
 ![examplers_light](https://user-images.githubusercontent.com/80967661/162576501-eb9f34d0-fde1-43d6-ae85-dba594256fa3.png)
 
 <br>Click - to activate/deactivate tile
