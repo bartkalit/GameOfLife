@@ -1,4 +1,4 @@
-# Conway's Game Of Life
+# Game Of Life
 
 It's a simple implementation of a well known Conway's game of life written in C++.
 <br>
