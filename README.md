@@ -15,9 +15,6 @@ It's a simple implementation of a well known Conway's game of life written in C+
 ![oscylator](https://user-images.githubusercontent.com/80967661/162577430-d2a85924-2c08-4b4d-ace5-8cfd16c21741.png)
 ![glider](https://user-images.githubusercontent.com/80967661/162577811-0a7f40a9-62a1-43ac-9f64-6392cc3101fa.png)
 
-
-<br>Click - to activate/deactivate tile
-<br>
 #### Controls:
 <ul>
 <li>Click - to activate/deactivate tile</li>
