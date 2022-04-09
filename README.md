@@ -1,8 +1,8 @@
-# GameOfLife
+# Conway's Game Of Life
 
-It's a simple implementation of a well known Conway's game of life written in C++ and Ui made with SFML library.
+It's a simple implementation of a well known Conway's game of life written in C++.
 <br>
-### Rules of Conway's Game of Life:
+### Rules of the Game:
 <ol>
   <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
   <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
