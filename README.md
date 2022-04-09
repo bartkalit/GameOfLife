@@ -12,7 +12,7 @@ It's a simple implementation of a well known Conway's game of life written in C+
 
 ### Example structures:
 
-![examplers_light](https://user-images.githubusercontent.com/80967661/162577078-97ea83f2-2648-4ef6-984d-c51ecfb09a5f.png)
+![light2](https://user-images.githubusercontent.com/80967661/162577189-6b51b569-6977-465d-8fa1-c9eb779a4607.png)
 
 <br>Click - to activate/deactivate tile
 <br>
