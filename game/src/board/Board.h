@@ -39,6 +39,7 @@ private:
 	void Tile_handler();
 	void Add_age();
 	void Check_neighbours(Tile* current);
+	void Check_tile(Tile* current, int x, int y);
 	void Check_board();
 	bool Pos_in_range(Point pos);
 	void recolor();

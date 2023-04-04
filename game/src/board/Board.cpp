@@ -162,22 +162,7 @@ void Board::Check_neighbours(Tile* current) {
         current->Change_check_flag();
         for (int y = -1; y < 2; y++) {
             for (int x = -1; x < 2; x++) {
-                if (!(!x && !y)) {
-                    int new_x = id.Get_x() + x;
-                    int new_y = id.Get_y() + y;
-                    if (new_x >= 0 && new_x < tiles_num) {
-                        if (new_y >= 0 && new_y < tiles_num) {
-                            if (current->Is_active() && !board[new_y][new_x].Is_active()) {
-                                
-                                tiles_to_check.push_back(&board[new_y][new_x]);
-                                Check_neighbours(&board[new_y][new_x]);
-                            }
-                            if(board[new_y][new_x].Is_active()){
-                                alive_neigh++;
-                            }
-                        }
-                    }
-                }
+                Check_tile(Tile* current, x, y)
             }
         }
         if (current->Is_active() && (alive_neigh < 2 || alive_neigh > 3)) {
@@ -185,6 +170,23 @@ void Board::Check_neighbours(Tile* current) {
         }
         else if (!current->Is_active() && alive_neigh == 3){
             tiles_to_change.push_back(current);
+        }
+    }
+}
+
+void Board::Check_tile(Tile* current, int x, int y){
+    if (x || y) {
+        int new_x = id.Get_x() + x;
+        int new_y = id.Get_y() + y;
+        if (new_x >= 0 && new_x < tiles_num) &&
+            (new_y >= 0 && new_y < tiles_num) {
+            if (current->Is_active() && !board[new_y][new_x].Is_active()) {
+                tiles_to_check.push_back(&board[new_y][new_x]);
+                Check_neighbours(&board[new_y][new_x]);
+            }
+            else if(board[new_y][new_x].Is_active()){
+                alive_neigh++;
+            }
         }
     }
 }
